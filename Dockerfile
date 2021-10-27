@@ -28,3 +28,4 @@ RUN apt-get install -y --no-install-recommends\
     rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/src/googletest ; cmake . ; cmake --build . --target install
+RUN pip install cpplint

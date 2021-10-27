@@ -13,7 +13,7 @@ pipeline {
         cmake .
         cmake --build .
         pip --version
-        scpplint --version
+        cpplint --version
         '''
       }
     }
