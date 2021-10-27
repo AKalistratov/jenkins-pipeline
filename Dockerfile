@@ -17,9 +17,12 @@ RUN apt-get install -y --no-install-recommends\
                     build-essential \
                     cmake \
                     unzip \
+                    libgtest-dev \
                     tar \
                     ca-certificates && \
     apt-get autoclean && \
     apt-get autoremove && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+RUN cd /usr/src/googletest ; cmake . ; cmake --build . --target install
