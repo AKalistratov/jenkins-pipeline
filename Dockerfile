@@ -18,6 +18,7 @@ RUN apt-get install -y --no-install-recommends\
                     cmake \
                     unzip \
                     libgtest-dev \
+                    libcurl-dev \
                     tar \
                     ca-certificates && \
     apt-get autoclean && \
