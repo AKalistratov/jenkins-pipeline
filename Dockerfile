@@ -20,6 +20,7 @@ RUN apt-get install -y --no-install-recommends\
                     libgtest-dev \
                     libcurl4-openssl-dev \
                     tar \
+                    python3-pip \
                     ca-certificates && \
     apt-get autoclean && \
     apt-get autoremove && \
