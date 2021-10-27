@@ -7,6 +7,7 @@ pipeline {
           node --version
           git --version
           curl --version
+          cmake --version
         '''
       }
     }
