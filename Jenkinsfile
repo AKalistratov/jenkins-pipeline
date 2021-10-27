@@ -12,6 +12,8 @@ pipeline {
         cd json_project
         cmake .
         cmake --build .
+        pip --version
+        scpplint --version
         '''
       }
     }
