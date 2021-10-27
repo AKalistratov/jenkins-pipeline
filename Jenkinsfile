@@ -9,10 +9,9 @@ pipeline {
     stage('Test') {
       steps {
        sh '''
-          git --version
-          curl --version
-          cmake --version
-          ls -al
+        cd json_project
+        cmake .
+        cmake --build .
         '''
       }
     }
