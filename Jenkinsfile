@@ -12,7 +12,20 @@ pipeline {
         cd json_project
         cmake .
         cmake --build .
-        cpplint --extensions=h,hpp,c,cpp,cc,cu,hh,ipp --recursive --filter="-legal/copyright,-readability/braces,-whitespace/braces,-whitespace/comments,-whitespace/indent,-whitespace/newline,-whitespace/operators,-whitespace/parens,-whitespace/tab,-whitespace/line_length" --exclude=3rdparty/* --output=junit ./ 2> cpplint.xml || true
+        cpplint --extensions=h,hpp,c,cpp,cc,cu,hh,ipp \
+        --recursive \
+        --filter="-legal/copyright,\
+        -readability/braces,\
+        -whitespace/braces,\
+        -whitespace/comments,\
+        -whitespace/indent,\
+        -whitespace/newline,\
+        -whitespace/operators,\
+        -whitespace/parens,\
+        -whitespace/tab,\
+        -whitespace/line_length" \
+        --exclude=3rdparty/* \
+        --output=junit ./ 2> cpplint.xml || true
         '''
       }
     }
