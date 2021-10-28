@@ -1,13 +1,12 @@
 pipeline {
   agent { dockerfile true }
   parameters {
-        string(name: 'BUILD_REPO', defaultValue: 'https://github.com/SWTec/cppinternship21-phase1.git', description: 'Choose repository')
         string(name: 'BUILD_BRANCH', defaultValue: 'main', description: 'You can choose another branch to build.')
   }
   stages {
     stage('Git checkout') {
       steps {
-        git branch: "${BUILD_BRANCH}", credentialsId: 'ilyataskaev', url: "${BUILD_REPO}"
+        git branch: "${BUILD_BRANCH}", credentialsId: 'ilyataskaev', url: 'https://github.com/SWTec/cppinternship21-phase1.git'
       }
     }
     stage('Build') {
