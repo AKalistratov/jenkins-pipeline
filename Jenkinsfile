@@ -6,8 +6,7 @@ pipeline {
   stages {
     stage('Git checkout') {
       steps {
-        // git branch: "${BUILD_BRANCH}", credentialsId: 'ilyataskaev', url: 'https://github.com/SWTec/cppinternship21-phase1.git'
-        git branch: "${BUILD_BRANCH}", url: 'https://github.com/arkeyme/terraform-associate.git'
+        git changelog: false, credentialsId: 'ilyataskaev', poll: false, url: 'https://github.com/SWTec/cppinternship21-phase1.git'
       }
     }
     stage('Build') {
