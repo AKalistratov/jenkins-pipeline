@@ -3,6 +3,9 @@ pipeline {
   parameters {
         string(name: 'BUILD_BRANCH', defaultValue: 'main', description: 'You can choose another branch to build.')
   }
+  environment {
+        GH_TOKEN     = credentials('GH_TOKEN')
+  }
   stages {
     stage('Git checkout') {
       steps {
