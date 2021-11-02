@@ -1,5 +1,8 @@
 pipeline {
-  agent ub5 { dockerfile true }
+  agent { 
+    dockerfile true
+    label 'ub5'
+  }
   parameters {
         string(name: 'BUILD_BRANCH', defaultValue: 'main', description: 'You can choose another branch to build.')
   }
