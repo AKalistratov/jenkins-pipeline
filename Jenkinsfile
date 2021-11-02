@@ -10,14 +10,15 @@ pipeline {
     stage('Git checkout') {
       steps {
         // git branch: "${BUILD_BRANCH}", changelog: false, credentialsId: 'ilyataskaev', poll: false, url: 'https://github.com/SWTec/cppinternship21-phase1.git'
+        cleanws()
         sh "pwd; printenv"
-        sh "git clone https://oauth2:${GH_TOKEN}@github.com/SWTec/cppinternship21-phase1.git"
+        sh "git clone https://oauth2:${GH_TOKEN}@github.com/SWTec/cppinternship21-phase1.git ."
       }
     }
     stage('Build') {
       steps {
        sh '''
-        cd cppinternship21-phase1/json_project
+        cd json_project
         cmake .
         cmake --build .
         cpplint --extensions=h,hpp,c,cpp,cc,cu,hh,ipp \
@@ -40,8 +41,8 @@ pipeline {
   }
   post {
       success {
-        junit allowEmptyResults: true, skipMarkingBuildUnstable: true, testResults: 'cppinternship21-phase1/json_project/cpplint.xml'
-        archiveArtifacts artifacts: 'cppinternship21-phase1/json_project/hello_test, cppinternship21-phase1/json_project/JsonDesLib', followSymlinks: false
+        junit allowEmptyResults: true, skipMarkingBuildUnstable: true, testResults: 'json_project/cpplint.xml'
+        archiveArtifacts artifacts: 'json_project/hello_test, json_project/JsonDesLib', followSymlinks: false
       }
   }
 }
