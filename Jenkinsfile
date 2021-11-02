@@ -1,5 +1,10 @@
 pipeline {
-  agent { dockerfile true }
+  agent { 
+    dockerfile {
+        filename 'Dockerfile'
+        label 'master'
+    }
+  }
   parameters {
         string(name: 'BUILD_BRANCH', defaultValue: 'main', description: 'You can choose another branch to build.')
   }
