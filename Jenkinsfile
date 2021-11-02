@@ -10,7 +10,6 @@ pipeline {
     stage('Git checkout') {
       steps {
         // git branch: "${BUILD_BRANCH}", changelog: false, credentialsId: 'ilyataskaev', poll: false, url: 'https://github.com/SWTec/cppinternship21-phase1.git'
-        cleanws()
         sh "pwd; printenv"
         sh "git clone https://oauth2:${GH_TOKEN}@github.com/SWTec/cppinternship21-phase1.git ."
       }
