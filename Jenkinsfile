@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Git checkout') {
       steps {
-        git changelog: false, credentialsId: 'ilyataskaev', poll: false, url: 'https://github.com/SWTec/cppinternship21-phase1.git'
+        git branch: "${BUILD_BRANCH}", changelog: false, credentialsId: 'ilyataskaev', poll: false, url: 'https://github.com/SWTec/cppinternship21-phase1.git'
       }
     }
     stage('Build') {
