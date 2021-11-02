@@ -43,7 +43,7 @@ pipeline {
         archiveArtifacts artifacts: 'cppinternship21-phase1/json_project/hello_test, cppinternship21-phase1/json_project/JsonDesLib', followSymlinks: false
       }
       always {
-        cleanws()
+        cleanWs()
       }
   }
 }
