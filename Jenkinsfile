@@ -5,18 +5,20 @@ pipeline {
   }
   environment {
         GH_TOKEN = credentials('GH_TOKEN')
+        ORG_NAME = "SWTec"
+        REPO_NAME = "cppinternship21-phase1"
   }
   stages {
     stage('Git checkout') {
       steps {
         sh "pwd; printenv; ls -al"
-        sh "git clone https://oauth2:${GH_TOKEN}@github.com/SWTec/cppinternship21-phase1.git"
+        sh "git clone -b ${BUILD_BRANCH} https://oauth2:${GH_TOKEN}@github.com/${ORG_NAME}/${REPO_NAME}.git"
       }
     }
     stage('Build') {
       steps {
-       sh '''
-        cd cppinternship21-phase1/json_project
+       sh """
+        cd ${REPO_NAME}/json_project
         cmake .
         cmake --build .
         cpplint --extensions=h,hpp,c,cpp,cc,cu,hh,ipp \
@@ -33,14 +35,14 @@ pipeline {
         -whitespace/line_length" \
         --exclude=3rdparty/* \
         --output=junit ./ 2> cpplint.xml || true
-        '''
+        """
       }
     }
   }
   post {
       success {
-        junit allowEmptyResults: true, skipMarkingBuildUnstable: true, testResults: 'cppinternship21-phase1/json_project/cpplint.xml'
-        archiveArtifacts artifacts: 'cppinternship21-phase1/json_project/hello_test, cppinternship21-phase1/json_project/JsonDesLib', followSymlinks: false
+        junit allowEmptyResults: true, skipMarkingBuildUnstable: true, testResults: "${REPO_NAME}/json_project/cpplint.xml"
+        archiveArtifacts artifacts: "${REPO_NAME}/json_project/hello_test, ${REPO_NAME}/json_project/JsonDesLib", followSymlinks: false
       }
       cleanup {
         cleanWs()
