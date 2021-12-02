@@ -11,7 +11,7 @@ pipeline {
   environment {
         GH_TOKEN = credentials('GH_TOKEN')
         ORG_NAME = "SWTec"
-        REPO_NAME = "cppinternship21-phase1"
+        REPO_NAME = "swtec-office-weather"
   }
   stages {
     stage('Git checkout') {
