@@ -11,7 +11,7 @@ pipeline {
   environment {
         GH_TOKEN = credentials('GH_TOKEN')
         ORG_NAME = "SWTec"
-        REPO_NAME = "swtec-office-weather"
+        REPO_NAME = "cppinternship21-phase1"
   }
   stages {
     stage('Git checkout') {
@@ -23,7 +23,7 @@ pipeline {
     stage('Build') {
       steps {
        sh """
-        cd ${REPO_NAME}
+        cd ${REPO_NAME}/json_project
         cmake .
         cmake --build .
         cpplint --extensions=h,hpp,c,cpp,cc,cu,hh,ipp \
