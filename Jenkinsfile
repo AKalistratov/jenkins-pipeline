@@ -23,7 +23,7 @@ pipeline {
     stage('Build') {
       steps {
        sh """
-        cd ${REPO_NAME}/json_project
+        cd ${REPO_NAME}
         cmake .
         cmake --build .
         cpplint --extensions=h,hpp,c,cpp,cc,cu,hh,ipp \
